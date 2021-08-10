@@ -24,10 +24,10 @@
             (content (car (alist-get "Content" request
                                      "" nil 'string-equal)))
             buffer-name)
-        (if (string-match "[^-_/a-zA-Z0-9]+" name)
+        (if (string-match "[^-._/a-zA-Z0-9]+" name)
             ;; illegal name
             (insert "ERROR: post name invalid\n"
-                    "  Name can only ontain '-' '/' or alphanumeric characters.\n")
+                    "  Name can only ontain \"-._/\" or alphanumeric characters.\n")
           (setq buffer-name (format "*pastebin: %s*" name))
           (get-buffer buffer-name)
           (if (string-empty-p content) ; content empty, then I can only return content
