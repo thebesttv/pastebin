@@ -20,17 +20,19 @@ Each entry is a cons struct of entry name and file name.")
 
 (defun pastebin-welcome ()
   "Return a string of welcome information containing available posts."
-  (apply 'concat
-         "This is a very simple pastebin.\n"
-         "Available posts:\n"
-         (mapcar (lambda (pair)
-                   (format "  %s (%s)\n"
-                           (car pair)     ; entry name
-                           (caddr pair))) ; file mime type
-                 (setq pastebin-entries
-                       (sort pastebin-entries (lambda (a b)
-                                                (string-lessp
-                                                 (car a) (car b))))))))
+  "This is a very simple pastebin.\n"
+  ;; (apply 'concat
+  ;;        "This is a very simple pastebin.\n"
+  ;;        "Available posts:\n"
+  ;;        (mapcar (lambda (pair)
+  ;;                  (format "  %s (%s)\n"
+  ;;                          (car pair)     ; entry name
+  ;;                          (caddr pair))) ; file mime type
+  ;;                (setq pastebin-entries
+  ;;                      (sort pastebin-entries (lambda (a b)
+  ;;                                               (string-lessp
+  ;;                                                (car a) (car b)))))))
+  )
 
 (defun httpd/pastebin (proc path query request)
   (if (or (string-equal path "/pastebin")
